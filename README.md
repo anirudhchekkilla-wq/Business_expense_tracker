@@ -207,20 +207,6 @@ Create a `.env` file inside the backend folder:
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET_KEY=your_secret_key
 ```
-
----
-
-## 📸 Screenshots
-
-Add screenshots of:
-
-* Landing Page
-* Dashboard
-* Income Management
-* Expense Management
-* Analytics
-* Settings
-
 ---
 
 ## 🎓 Project Purpose
