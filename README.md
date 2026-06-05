@@ -63,9 +63,8 @@ Business Expense Tracker is a full-stack web application designed to help busine
 
 * Complete Transaction History
 * Search Transactions
-* Filter by Date
-* Filter by Category
-* Filter by Amount
+* Filter by incomes and expenses
+
 
 ### ⚙️ Settings
 
