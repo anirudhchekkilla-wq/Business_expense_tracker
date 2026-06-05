@@ -7,15 +7,25 @@ import {
   FiShield,
   FiBriefcase,
 } from "react-icons/fi";
-
+import { HiOutlineWallet } from "react-icons/hi2";
 function LandingPage() {
   return (
 <div className="min-h-screen bg-gradient-to-br from-[#020617] via-[#0b1120] to-[#111827] text-white">      {/* Navbar */}
 <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#050b22]/80 border-b border-white/10"> 
  <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 <div className="flex items-center gap-3">
-  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500" />
-
+<div
+  className="
+  w-12 h-12
+  rounded-full
+  bg-gradient-to-br
+  from-violet-400
+  to-purple-600
+  flex items-center justify-center
+  "
+>
+  <HiOutlineWallet className="text-white text-2xl" />
+</div>
   <h1 className="text-3xl font-serif text-white">
     ExpenseTracker
   </h1>
@@ -35,7 +45,7 @@ function LandingPage() {
       </Link>
 
      <Link
-  to="/signup"
+  to="/login"
   className="px-6 py-3 rounded-full bg-violet-500 hover:bg-violet-400 transition font-semibold"
 >
         Signup
