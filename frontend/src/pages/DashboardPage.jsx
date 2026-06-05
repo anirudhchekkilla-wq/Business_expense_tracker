@@ -364,15 +364,7 @@ mt-8
     Recent Transactions
   </h2>
 
-  <button
-   
-    className="
-    text-indigo-400
-    hover:text-indigo-300
-  "
-  >
-    View all
-  </button>
+
 
 </div>
 
