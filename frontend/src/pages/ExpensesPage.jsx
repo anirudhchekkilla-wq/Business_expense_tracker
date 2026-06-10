@@ -4,6 +4,7 @@ import { BusinessContext } from "../context/BusinessContext";
 import { FiEdit2, FiTrash2, FiSearch } from "react-icons/fi";
 import Sidebar from "../components/Sidebar";
 import TopNavbar from "../components/TopNavbar";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ExpensesPage() {
   const { selectedBusiness } =
@@ -28,7 +29,8 @@ function ExpensesPage() {
   };
 const [editingId, setEditingId] =
   useState(null);
-
+const [showModal, setShowModal] =
+  useState(false);
   const fetchExpenses = async () => {
     if (!selectedBusiness) return;
 
@@ -80,6 +82,7 @@ const editExpense = (expense) => {
   });
 
   setEditingId(expense._id);
+  setShowModal(true);
 };
 
 const updateExpense = async (e) => {
@@ -89,7 +92,7 @@ const updateExpense = async (e) => {
   try {
 
     await axios.put(
-      `http://127.0.0.1:5000/expenses/${editingId}`,
+      `http://127.0.0.1:5000/expense/${editingId}`,
       {
         title: formData.title,
         amount: formData.amount,
@@ -194,31 +197,294 @@ const addExpense = async (e) => {
       <h1 className="text-3xl font-serif mb-6">
         Expenses - {selectedBusiness.businessName}
       </h1>
+<div className="mb-8 flex justify-end">
 
-      <form
+  <button
+    onClick={() => {
+
+      setEditingId(null);
+
+      setFormData({
+        source: "",
+        amount: "",
+        category: "",
+        customCategory: "",
+        date: "",
+        description: "",
+      });
+
+      setShowModal(true);
+
+    }}
+    className="
+    px-6 py-3
+    rounded-2xl
+    bg-gradient-to-r
+    from-cyan-500
+    to-blue-600
+    font-semibold
+    "
+  >
+    + Add Expense
+  </button>
+
+</div>
+      
+
+     <div className="bg-[#0f1f4d]/80 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+
+  <div className="flex justify-between items-center p-6">
+
+    <div>
+
+      <h2 className="text-4xl font-serif text-white">
+        Expenses
+      </h2>
+
+      <p className="text-slate-400 mt-2">
+        {expenses.length} entries · ₹
+        {expenses.reduce(
+          (sum, item) =>
+            sum + Number(item.amount),
+          0
+        )}
+        {" "}total
+      </p>
+
+    </div>
+
+  
+
+  </div>
+
+  <div className="px-6 pb-6">
+
+   
+
+    <table className="w-full">
+
+      <thead>
+
+        <tr className="border-b border-white/10 text-slate-400">
+
+          <th className="text-left p-5">
+            TITLE
+          </th>
+
+          <th className="text-left p-5">
+            CATEGORY
+          </th>
+
+          <th className="text-left p-5">
+            DATE
+          </th>
+
+          <th className="text-left p-5">
+            AMOUNT
+          </th>
+
+          <th className="text-center p-5">
+            ACTIONS
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        {expenses.map((expense) => (
+
+          <tr
+            key={expense._id}
+            className="
+            border-b
+            border-white/5
+            hover:bg-white/5
+            font-serif
+          "
+          >
+
+            <td className="p-5 font-serif">
+              {expense.title}
+            </td>
+
+            <td className="p-5">
+
+              <span
+                className="
+                px-3 py-1
+                rounded-full
+                bg-indigo-500/20
+                text-indigo-300
+                text-sm
+                font-serif
+              "
+              >
+                {expense.category}
+              </span>
+
+            </td>
+
+            <td className="p-5 text-slate-300 font-serif">
+              {expense.date}
+            </td>
+
+            <td
+              className="
+              p-5
+              text-amber-400
+              font-bold
+              text-xl
+            "
+            >
+              -₹{expense.amount}
+            </td>
+
+            <td className="p-5">
+
+              <div className="flex justify-center gap-5">
+
+                <button
+                  onClick={() =>
+                    editExpense(expense)
+                  }
+                  className="
+                  text-slate-300
+                  hover:text-cyan-400
+                "
+                >
+                  <FiEdit2 size={18} />
+                </button>
+
+                <button
+                  onClick={() =>
+                    deleteExpense(
+                      expense._id
+                    )
+                  }
+                  className="
+                  text-slate-300
+                  hover:text-red-400
+                "
+                >
+                  <FiTrash2 size={18} />
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        ))}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+<AnimatePresence>
+
+  {showModal && (
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      className="
+      fixed inset-0
+      bg-black/60
+      backdrop-blur-sm
+      z-50
+      flex
+      items-center
+      justify-center
+      "
+    >
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.95,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        }}
+        exit={{
+          opacity: 0,
+          scale: 0.95,
+          y: 20,
+        }}
+        transition={{
+          duration: 0.3,
+          ease: "easeOut",
+        }}
+       
+      >
+
+       <form
   onSubmit={
     editingId
       ? updateExpense
       : addExpense
   }
 
-className="
-bg-[#0f1f4d]/80
-backdrop-blur-xl
-border
-border-white/10
-rounded-3xl
-p-8
-mb-8
-shadow-2xl
-"      >
-        <h2 className="text-3xl font-serif text-white mb-6">
-         {
-  editingId
-    ? "Update Expense"
-    : "Add Expense"
-}
-        </h2>
+ className="
+        w-full
+        max-w-3xl
+        bg-[#0f1f4d]
+        border
+        border-white/10
+        rounded-3xl
+        p-8
+        shadow-2xl
+        "    >
+       <div className="flex items-center justify-between mb-8">
+
+  <h2 className="text-4xl font-serif text-white">
+
+    {editingId
+      ? "Update Expense"
+      : "Add Expense"}
+
+  </h2>
+
+  <button
+    type="button"
+    onClick={() => {
+
+      setShowModal(false);
+
+      setEditingId(null);
+
+      setFormData({
+        source: "",
+        amount: "",
+        category: "",
+        customCategory: "",
+        date: "",
+        description: "",
+      });
+
+    }}
+    className="
+    text-slate-400
+    hover:text-white
+    text-3xl
+    transition-all
+    "
+  >
+    ×
+  </button>
+
+</div>
 
         <input
           type="text"
@@ -429,161 +695,13 @@ transition-all
 }
       </form>
 
-     <div className="bg-[#0f1f4d]/80 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+      </motion.div>
 
-  <div className="flex justify-between items-center p-6">
+    </motion.div>
 
-    <div>
+  )}
 
-      <h2 className="text-4xl font-serif text-white">
-        Expenses
-      </h2>
-
-      <p className="text-slate-400 mt-2">
-        {expenses.length} entries · ₹
-        {expenses.reduce(
-          (sum, item) =>
-            sum + Number(item.amount),
-          0
-        )}
-        {" "}total
-      </p>
-
-    </div>
-
-  
-
-  </div>
-
-  <div className="px-6 pb-6">
-
-   
-
-    <table className="w-full">
-
-      <thead>
-
-        <tr className="border-b border-white/10 text-slate-400">
-
-          <th className="text-left p-5">
-            TITLE
-          </th>
-
-          <th className="text-left p-5">
-            CATEGORY
-          </th>
-
-          <th className="text-left p-5">
-            DATE
-          </th>
-
-          <th className="text-left p-5">
-            AMOUNT
-          </th>
-
-          <th className="text-center p-5">
-            ACTIONS
-          </th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        {expenses.map((expense) => (
-
-          <tr
-            key={expense._id}
-            className="
-            border-b
-            border-white/5
-            hover:bg-white/5
-            font-serif
-          "
-          >
-
-            <td className="p-5 font-serif">
-              {expense.title}
-            </td>
-
-            <td className="p-5">
-
-              <span
-                className="
-                px-3 py-1
-                rounded-full
-                bg-indigo-500/20
-                text-indigo-300
-                text-sm
-                font-serif
-              "
-              >
-                {expense.category}
-              </span>
-
-            </td>
-
-            <td className="p-5 text-slate-300 font-serif">
-              {expense.date}
-            </td>
-
-            <td
-              className="
-              p-5
-              text-amber-400
-              font-bold
-              text-xl
-            "
-            >
-              -₹{expense.amount}
-            </td>
-
-            <td className="p-5">
-
-              <div className="flex justify-center gap-5">
-
-                <button
-                  onClick={() =>
-                    editExpense(expense)
-                  }
-                  className="
-                  text-slate-300
-                  hover:text-cyan-400
-                "
-                >
-                  <FiEdit2 size={18} />
-                </button>
-
-                <button
-                  onClick={() =>
-                    deleteExpense(
-                      expense._id
-                    )
-                  }
-                  className="
-                  text-slate-300
-                  hover:text-red-400
-                "
-                >
-                  <FiTrash2 size={18} />
-                </button>
-
-              </div>
-
-            </td>
-
-          </tr>
-
-        ))}
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</div>
+</AnimatePresence>
 </div>
 </div>
 </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { BusinessContext } from "../context/BusinessContext";
 import Sidebar from "../components/Sidebar";
 import TopNavbar from "../components/TopNavbar";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FiEdit2,
   FiTrash2,
@@ -31,7 +32,8 @@ function IncomePage() {
   };
 const [editingId, setEditingId] =
   useState(null);
-
+const [showModal, setShowModal] =
+  useState(false);
   const fetchIncome = async () => {
     if (!selectedBusiness) return;
 
@@ -83,6 +85,7 @@ const editIncome = (income) => {
   });
 
   setEditingId(income._id);
+  setShowModal(true);
 };
 
 const updateIncome = async (e) => {
@@ -180,7 +183,7 @@ const updateIncome = async (e) => {
 
 <div className="flex-1 bg-[#020617] min-h-screen">
         <TopNavbar />
-<div className="p-8 bg-[#08162E] min-h-screen">
+<div className="p-8 min-h-screen bg-gradient-to-br from-[#020617] via-[#0b1120] to-[#111827] text-white">  
 <h1 className="text-4xl font-serif text-white">      
    Income - {selectedBusiness.businessName}
       </h1>
@@ -197,27 +200,248 @@ const updateIncome = async (e) => {
   </p>
 </div>
 
-      <form
+<div className="mb-8 flex justify-end">
+
+  <button
+    onClick={() => {
+
+      setEditingId(null);
+
+      setFormData({
+        source: "",
+        amount: "",
+        category: "",
+        customCategory: "",
+        date: "",
+        description: "",
+      });
+
+      setShowModal(true);
+
+    }}
+    className="
+    px-6 py-3
+    rounded-2xl
+    bg-gradient-to-r
+    from-cyan-500
+    to-blue-600
+    font-semibold
+    "
+  >
+    + Add Income
+  </button>
+
+</div>
+<div
+className="
+bg-[#0f1f4d]/80
+backdrop-blur-xl
+border
+border-white/10
+rounded-3xl
+p-8
+mb-8
+shadow-2xl
+"      >
+<h2 className="text-3xl font-serif text-white mb-6">          Income History
+        </h2>
+
+        <table className="w-full border-collapse">
+          <thead>
+<tr className="border-b border-white/10">             
+<th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Source</th>
+             <th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Amount</th>
+             <th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Category</th>
+             <th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Date</th>
+             <th className="py-5 px-6 text-center text-slate-400 uppercase text-sm">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {income.length > 0 ? (
+              income.map((income) => (
+                <tr
+                  key={income._id}
+className="
+border-b
+border-white/10
+hover:bg-white/5
+transition-all
+font-serif
+"              >
+                  <td className="p-4 text-white">
+                    {income.source}
+                  </td>
+
+                  <td className="p-4 font-semibold text-emerald-400">
+ 
+  {income.amount}
+</td>
+
+                  <td className="p-4 text-white">
+                 <span
+  className="
+    bg-indigo-500/20
+    text-indigo-300
+    px-3
+    py-1
+    rounded-full
+    text-sm
+  "
+>
+  {income.category}
+</span>
+                  </td>
+
+                  <td className="p-4 text-white">
+                    {income.date}
+                  </td>
+             <td className="p-5">
+
+              <div className="flex justify-center gap-5">
+
+                <button
+                  onClick={() =>
+                    editIncome(income)
+                  }
+                  className="
+                  text-slate-300
+                  hover:text-cyan-400
+                "
+                >
+                  <FiEdit2 size={18} />
+                </button>
+
+                <button
+                  onClick={() =>
+                    deleteIncome(
+                      income._id
+                    )
+                  }
+                  className="
+                  text-slate-300
+                  hover:text-red-400
+                "
+                >
+                  <FiTrash2 size={18} />
+                </button>
+
+              </div>
+
+            </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="4"
+className="p-8 text-center text-gray-400"                >
+                  No Income Found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+<AnimatePresence>
+
+  {showModal && (
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      className="
+      fixed inset-0
+      bg-black/60
+      backdrop-blur-sm
+      z-50
+      flex
+      items-center
+      justify-center
+      "
+    >
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.95,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        }}
+        exit={{
+          opacity: 0,
+          scale: 0.95,
+          y: 20,
+        }}
+        transition={{
+          duration: 0.3,
+          ease: "easeOut",
+        }}
+      
+      >
+
+       <form
   onSubmit={
     editingId
       ? updateIncome
       : addIncome
   }
 
-className="
-bg-[#102C5C]
-border border-white/10
-rounded-3xl
-p-8
-shadow-2xl
-mb-8
-"      >
-<h2 className="text-3xl font-serif text-white mb-6">         {
-  editingId
-    ? "Update Income"
-    : "Add Income"
-}
-        </h2>
+  className="
+        w-full
+        max-w-3xl
+        bg-[#0f1f4d]
+        border
+        border-white/10
+        rounded-3xl
+        p-8
+        shadow-2xl
+        "   >
+<div className="flex items-center justify-between mb-8">
+
+  <h2 className="text-4xl font-serif text-white">
+
+    {editingId
+      ? "Update Income"
+      : "Add Income"}
+
+  </h2>
+
+  <button
+    type="button"
+    onClick={() => {
+
+      setShowModal(false);
+
+      setEditingId(null);
+
+      setFormData({
+        source: "",
+        amount: "",
+        category: "",
+        customCategory: "",
+        date: "",
+        description: "",
+      });
+
+    }}
+    className="
+    text-slate-400
+    hover:text-white
+    text-3xl
+    transition-all
+    "
+  >
+    ×
+  </button>
+
+</div>
 
         <input
           type="text"
@@ -417,116 +641,17 @@ transition-all
     </button>
   )
 }
-      </form>
+      
 
-<div
-className="
-bg-[#102C5C]
-border border-white/10
-p-6
-rounded-3xl
-shadow-xl
-">
-<h2 className="text-3xl font-serif text-white mb-6">          Income History
-        </h2>
+    </form>
 
-        <table className="w-full border-collapse">
-          <thead>
-<tr className="border-b border-white/10">             
-<th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Source</th>
-             <th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Amount</th>
-             <th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Category</th>
-             <th className="py-5 px-6 text-left text-slate-400 uppercase text-sm">Date</th>
-             <th className="py-5 px-6 text-center text-slate-400 uppercase text-sm">Actions</th>
-            </tr>
-          </thead>
+      </motion.div>
 
-          <tbody>
-            {income.length > 0 ? (
-              income.map((income) => (
-                <tr
-                  key={income._id}
-className="
-border-b
-border-white/10
-hover:bg-white/5
-transition-all
-font-serif
-"              >
-                  <td className="p-4 text-white">
-                    {income.source}
-                  </td>
+    </motion.div>
 
-                  <td className="p-4 font-semibold text-emerald-400">
- 
-  {income.amount}
-</td>
+  )}
 
-                  <td className="p-4 text-white">
-                 <span
-  className="
-    bg-indigo-500/20
-    text-indigo-300
-    px-3
-    py-1
-    rounded-full
-    text-sm
-  "
->
-  {income.category}
-</span>
-                  </td>
-
-                  <td className="p-4 text-white">
-                    {income.date}
-                  </td>
-             <td className="p-5">
-
-              <div className="flex justify-center gap-5">
-
-                <button
-                  onClick={() =>
-                    editIncome(income)
-                  }
-                  className="
-                  text-slate-300
-                  hover:text-cyan-400
-                "
-                >
-                  <FiEdit2 size={18} />
-                </button>
-
-                <button
-                  onClick={() =>
-                    deleteIncome(
-                      income._id
-                    )
-                  }
-                  className="
-                  text-slate-300
-                  hover:text-red-400
-                "
-                >
-                  <FiTrash2 size={18} />
-                </button>
-
-              </div>
-
-            </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan="4"
-className="p-8 text-center text-gray-400"                >
-                  No Income Found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+</AnimatePresence>
 
     </div>
      </div>
