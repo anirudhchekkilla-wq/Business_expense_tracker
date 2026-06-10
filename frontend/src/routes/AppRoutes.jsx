@@ -16,43 +16,16 @@ function AppRoutes() {
     <BrowserRouter>
 
       <Routes>
-
         <Route path="/" element={<LandingPage />} />
-
         <Route path="/login" element={<LoginPage />} />
-
         <Route path="/business-setup" element={<BusinessSetupPage />} />
-        <Route
-  path="/businesses"
-  element={
-    <ProtectedRoute>
-      <BusinessSelectionPage />
-    </ProtectedRoute>
-  }
-/>
-
-
-        <Route
-  path="/dashboard"
-  element={
-    <ProtectedRoute>
-      <DashboardPage />
-    </ProtectedRoute>
-  }
-/>
-<Route
-  path="/expenses"
-  element={<ExpensesPage />}
-/>
-
-<Route
-  path="/income"
-  element={<IncomePage />}
-/>
-
-<Route path="/transactions" element={<TransactionsPage />} />
-<Route path="/analytics" element={<AnalyticsPage />} />
-<Route path="/settings" element={<SettingsPage />} />
+        <Route path="/businesses" element={<ProtectedRoute><BusinessSelectionPage /></ProtectedRoute>}/>
+        <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute> }/>
+        <Route path="/expenses" element={<ExpensesPage />}/>
+        <Route path="/income" element={<IncomePage />}/>
+        <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Routes>
 
     </BrowserRouter>

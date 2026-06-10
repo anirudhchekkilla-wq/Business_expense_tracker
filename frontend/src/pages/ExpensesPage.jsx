@@ -499,10 +499,11 @@ transition-all
             border-b
             border-white/5
             hover:bg-white/5
+            font-serif
           "
           >
 
-            <td className="p-5 font-semibold">
+            <td className="p-5 font-serif">
               {expense.title}
             </td>
 
@@ -515,6 +516,7 @@ transition-all
                 bg-indigo-500/20
                 text-indigo-300
                 text-sm
+                font-serif
               "
               >
                 {expense.category}
@@ -522,7 +524,7 @@ transition-all
 
             </td>
 
-            <td className="p-5 text-slate-300">
+            <td className="p-5 text-slate-300 font-serif">
               {expense.date}
             </td>
 

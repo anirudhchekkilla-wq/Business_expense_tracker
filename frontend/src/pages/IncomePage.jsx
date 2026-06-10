@@ -451,6 +451,7 @@ border-b
 border-white/10
 hover:bg-white/5
 transition-all
+font-serif
 "              >
                   <td className="p-4 text-white">
                     {income.source}
