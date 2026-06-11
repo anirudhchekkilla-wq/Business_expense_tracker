@@ -277,8 +277,8 @@ mb-6
       nameKey="name"
       cx="50%"
       cy="50%"
-      innerRadius={70}
-      outerRadius={120}
+      innerRadius={90}
+      outerRadius={125}
       paddingAngle={2}
       stroke="#E5E7EB"
       strokeWidth={2}
