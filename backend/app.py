@@ -56,7 +56,8 @@ def register():
     )
 
     # User object
-    user = {
+    user = { 
+
         "fullName": full_name,
         "email": email,
         "password": hashed_password
@@ -347,7 +348,7 @@ def update_business(business_id):
         )
 
         return jsonify({
-            "message": "Business updated successfully"
+            "message": "Business updated successfully reopen again to see changes"
         }), 200
 
     except Exception as e:
