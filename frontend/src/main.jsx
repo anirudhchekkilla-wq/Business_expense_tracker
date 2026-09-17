@@ -7,13 +7,13 @@ import { BusinessProvider } from "./context/BusinessContext";
 import { AuthProvider } from "./context/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <AuthProvider>
+  <React.StrictMode>
+    <AuthProvider>
 
-  <BusinessProvider>
-    <App />
-  </BusinessProvider>
+      <BusinessProvider>
+        <App />
+      </BusinessProvider>
 
-</AuthProvider>
-    </React.StrictMode>
+    </AuthProvider>
+  </React.StrictMode>
 );

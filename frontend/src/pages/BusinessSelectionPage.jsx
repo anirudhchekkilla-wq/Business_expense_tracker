@@ -41,18 +41,18 @@ function BusinessSelectionPage() {
   };
 
   return (
-<div className="min-h-screen bg-gradient-to-br
+    <div className="min-h-screen bg-gradient-to-br
 from-[#030712]
 via-[#0b1120]
 to-[#140b2d]
 relative
 overflow-hidden text-white px-12 py-10">
-  {/* Glow Effects */}
-  {/* Background Glow */}
-<div className="absolute inset-0 pointer-events-none">
+      {/* Glow Effects */}
+      {/* Background Glow */}
+      <div className="absolute inset-0 pointer-events-none">
 
-  <div
-    className="
+        <div
+          className="
     absolute
     top-0
     right-0
@@ -61,10 +61,10 @@ overflow-hidden text-white px-12 py-10">
     bg-purple-700/20
     blur-[180px]
     "
-  />
+        />
 
-  <div
-    className="
+        <div
+          className="
     absolute
     bottom-0
     left-0
@@ -73,53 +73,53 @@ overflow-hidden text-white px-12 py-10">
     bg-blue-700/15
     blur-[180px]
     "
-  />
+        />
 
-</div>
-     <div className="flex justify-between items-start mb-12">
+      </div>
+      <div className="flex justify-between items-start mb-12">
 
-  <div>
+        <div>
 
-    <h1
-      className="
+          <h1
+            className="
       text-6xl
       font-serif
       text-[#e7ebff]
       "
-    >
-      Your businesses
-    </h1>
+          >
+            Your businesses
+          </h1>
 
-    <p className="text-[#a9b3d1] text-xl mt-4">
-      Pick a workspace or create a new one.
-    </p>
+          <p className="text-[#a9b3d1] text-xl mt-4">
+            Pick a workspace or create a new one.
+          </p>
 
-  </div>
+        </div>
 
-  <button
-    onClick={() => navigate("/")}
-    className="text-[#cfd6f6] hover:text-white"
-  >
-    ← Home
-  </button>
+        <button
+          onClick={() => navigate("/")}
+          className="text-[#cfd6f6] hover:text-white"
+        >
+          ← Home
+        </button>
 
-</div>
+      </div>
 
-<div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         {businesses.map((business) => (
 
           <div
             key={business._id}
             onClick={() => {
 
-  console.log("Selected:", business);
+              console.log("Selected:", business);
 
-  selectBusiness(business);
+              selectBusiness(business);
 
-  navigate("/dashboard");
+              navigate("/dashboard");
 
-}}
-className="
+            }}
+            className="
 cursor-pointer
 rounded-3xl
 border
@@ -133,64 +133,64 @@ hover:border-white/20
 hover:scale-[1.01]
 "          >
 
-<h2 className="text-4xl font-serif text-white">
-  {business.businessName}
-</h2>
+            <h2 className="text-4xl font-serif text-white">
+              {business.businessName}
+            </h2>
 
-<p className="text-[#a9b3d1] mt-2">
-  {business.businessType} · {business.currency}
-</p>
+            <p className="text-[#a9b3d1] mt-2">
+              {business.businessType} · {business.currency}
+            </p>
 
-{/* Stats Row */}
-<div className="grid grid-cols-3 gap-4 mt-8">
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-4 mt-8">
 
-  <div className="rounded-2xl border border-white/10 p-4">
+              <div className="rounded-2xl border border-white/10 p-4">
 
-    <p className="text-xs text-gray-400">
-      INCOME
-    </p>
+                <p className="text-xs text-gray-400">
+                  INCOME
+                </p>
 
-    <p className="text-2xl text-emerald-400 mt-2">
-      --
-    </p>
+                <p className="text-2xl text-emerald-400 mt-2">
+                  --
+                </p>
 
-  </div>
+              </div>
 
-  <div className="rounded-2xl border border-white/10 p-4">
+              <div className="rounded-2xl border border-white/10 p-4">
 
-    <p className="text-xs text-gray-400">
-      EXPENSE
-    </p>
+                <p className="text-xs text-gray-400">
+                  EXPENSE
+                </p>
 
-    <p className="text-2xl text-amber-400 mt-2">
-      --
-    </p>
+                <p className="text-2xl text-amber-400 mt-2">
+                  --
+                </p>
 
-  </div>
+              </div>
 
-  <div className="rounded-2xl border border-white/10 p-4">
+              <div className="rounded-2xl border border-white/10 p-4">
 
-    <p className="text-xs text-gray-400">
-      PROFIT
-    </p>
+                <p className="text-xs text-gray-400">
+                  PROFIT
+                </p>
 
-    <p className="text-2xl text-violet-400 mt-2">
-      --
-    </p>
+                <p className="text-2xl text-violet-400 mt-2">
+                  --
+                </p>
 
-  </div>
+              </div>
 
-</div>
+            </div>
 
           </div>
 
         ))}
 
-     <div
-  onClick={() =>
-    navigate("/business-setup")
-  }
-  className="
+        <div
+          onClick={() =>
+            navigate("/business-setup")
+          }
+          className="
   cursor-pointer
   rounded-3xl
   border
@@ -208,15 +208,15 @@ hover:scale-[1.01]
   transition-all
   duration-300
   "
->
+        >
 
           <h2 className="text-5xl font-serif text-white">
-  Add new business
-</h2>
+            Add new business
+          </h2>
 
-<p className="text-[#a9b3d1] mt-3">
-  Spin up a new workspace
-</p>
+          <p className="text-[#a9b3d1] mt-3">
+            Spin up a new workspace
+          </p>
 
         </div>
 

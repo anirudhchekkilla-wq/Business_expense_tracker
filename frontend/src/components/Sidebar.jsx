@@ -45,7 +45,7 @@ function Sidebar() {
   ];
 
   return (
-<div className="w-64 min-h-screen bg-[#020617]/95 backdrop-blur-xl border-r border-white/10 flex flex-col">
+    <div className="w-64 min-h-screen bg-[#020617]/95 backdrop-blur-xl border-r border-white/10 flex flex-col">
       {/* Logo */}
 
       <div className="p-6 border-b border-white/10">
@@ -73,10 +73,9 @@ function Sidebar() {
             to={item.path}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300
               
-              ${
-                location.pathname === item.path
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg"
-                  : "text-gray-300 hover:bg-white/10 hover:text-white"
+              ${location.pathname === item.path
+                ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg"
+                : "text-gray-300 hover:bg-white/10 hover:text-white"
               }
             `}
           >

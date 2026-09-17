@@ -35,8 +35,8 @@ function SummaryCard({
   };
 
   return (
-<div
-  className="
+    <div
+      className="
   relative
   overflow-hidden
   rounded-3xl
@@ -49,7 +49,7 @@ function SummaryCard({
   transition-all
   duration-300
   "
->
+    >
 
       {/* Glow Effect */}
 
@@ -75,24 +75,23 @@ function SummaryCard({
         <div>
 
           <p className="text-slate-400 text-lg uppercase tracking-wide">
-  {title}
-</p>
+            {title}
+          </p>
 
           <h2
-  className={`text-5xl font-serif mt-6 ${
-    title.includes("Income")
-      ? "text-emerald-400"
-      : title.includes("Expense")
-      ? "text-amber-400"
-      : "text-indigo-400"
-  }`}
->
+            className={`text-5xl font-serif mt-6 ${title.includes("Income")
+                ? "text-emerald-400"
+                : title.includes("Expense")
+                  ? "text-amber-400"
+                  : "text-indigo-400"
+              }`}
+          >
 
             {currencySymbol}
             {Number(amount).toLocaleString()}
             <p className="text-slate-400 text-sm mt-3">
-  Last 6 months
-</p>
+              Last 6 months
+            </p>
 
           </h2>
 
@@ -107,13 +106,12 @@ function SummaryCard({
             items-center
             justify-center
             text-white
-             ${
-      title.includes("Income")
-        ? "text-emerald-400"
-        : title.includes("Expense")
-        ? "text-amber-400"
-        : "text-indigo-400"
-    }
+             ${title.includes("Income")
+              ? "text-emerald-400"
+              : title.includes("Expense")
+                ? "text-amber-400"
+                : "text-indigo-400"
+            }
           bg-white/10
 backdrop-blur-md
           `}

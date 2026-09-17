@@ -77,18 +77,18 @@ function LoginPage() {
       console.log(response.data);
 
       // LOGIN LOGIC
-     if (isLogin) {
+      if (isLogin) {
 
-  login(response.data.token);
+        login(response.data.token);
 
-  localStorage.setItem(
-    "user_id",
-    response.data.user_id
-  );
+        localStorage.setItem(
+          "user_id",
+          response.data.user_id
+        );
 
-  navigate("/businesses");
+        navigate("/businesses");
 
-} else {
+      } else {
 
         alert("Signup Successful! Please Login");
 
@@ -116,23 +116,23 @@ function LoginPage() {
 
   return (
 
-    
-<div className="relative min-h-screen grid lg:grid-cols-2 bg-[#030712] overflow-hidden">
 
-  {/* Glow Effects */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-900/20 blur-[150px]" />
-    <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-purple-900/20 blur-[150px]" />
-  </div>
+    <div className="relative min-h-screen grid lg:grid-cols-2 bg-[#030712] overflow-hidden">
 
-  {/* LEFT SIDE */}
-  <div className="relative z-10 flex flex-col justify-between p-12 lg:p-16">
+      {/* Glow Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-900/20 blur-[150px]" />
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-purple-900/20 blur-[150px]" />
+      </div>
 
-    {/* Logo */}
-    <div className="flex items-center gap-3">
+      {/* LEFT SIDE */}
+      <div className="relative z-10 flex flex-col justify-between p-12 lg:p-16">
 
-      <div
-        className="
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+
+          <div
+            className="
         h-10
         w-10
         rounded-full
@@ -140,49 +140,49 @@ function LoginPage() {
         from-violet-400
         to-fuchsia-500
       "
-      />
+          />
 
-      <h1 className="text-white text-3xl font-serif">
-        Expense Tracker
-      </h1>
+          <h1 className="text-white text-3xl font-serif">
+            Expense Tracker
+          </h1>
 
-    </div>
+        </div>
 
-    {/* Heading */}
-    <div className="max-w-xl">
+        {/* Heading */}
+        <div className="max-w-xl">
 
-      <h2
-        className="
+          <h2
+            className="
         text-[#e7ebff]
         text-6xl
         lg:text-6xl
         font-serif
         leading-tight
       "
-      >
-        Numbers that
-        <br />
-        speak clearly.
-      </h2>
+          >
+            Numbers that
+            <br />
+            speak clearly.
+          </h2>
 
-      <p
-        className="
+          <p
+            className="
         mt-8
         text-xl
         text-[#a9b3d1]
         leading-relaxed
       "
-      >
-        Trusted by independent operators,
-        agencies, and growing teams to keep
-        cash flow crystal clear.
-      </p>
+          >
+            Trusted by independent operators,
+            agencies, and growing teams to keep
+            cash flow crystal clear.
+          </p>
 
-    </div>
+        </div>
 
-    {/* Testimonial */}
-    <div
-      className="
+        {/* Testimonial */}
+        <div
+          className="
       max-w-xl
       p-8
       rounded-3xl
@@ -191,16 +191,16 @@ function LoginPage() {
       bg-white/[0.03]
       backdrop-blur-xl
     "
-    >
+        >
 
-      <p className="text-[#cfd6f6] text-lg">
-        Streamline your financial management with our intuitive expense and income tracking.
-      </p>
+          <p className="text-[#cfd6f6] text-lg">
+            Streamline your financial management with our intuitive expense and income tracking.
+          </p>
 
-      <div className="flex items-center gap-4 mt-6">
+          <div className="flex items-center gap-4 mt-6">
 
-        <div
-          className="
+            <div
+              className="
           h-12
           w-12
           rounded-full
@@ -208,37 +208,37 @@ function LoginPage() {
           from-violet-400
           to-fuchsia-500
         "
-        />
+            />
 
-        <div>
-          <p className="text-white font-semibold">
-            Login or
-          </p>
+            <div>
+              <p className="text-white font-semibold">
+                Login or
+              </p>
 
-          <p className="text-gray-400 text-sm">
-            Signup
-          </p>
+              <p className="text-gray-400 text-sm">
+                Signup
+              </p>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
-    </div>
+      {/* RIGHT SIDE */}
+      <div className="relative z-10 flex items-center justify-center p-8">
 
-  </div>
-
-  {/* RIGHT SIDE */}
-  <div className="relative z-10 flex items-center justify-center p-8">
-
-    <motion.form
-  layout
-  transition={{
-    layout: {
-      duration: 0.3,
-      ease: "easeInOut",
-    },
-  }}
-  onSubmit={handleSubmit}
-className="
+        <motion.form
+          layout
+          transition={{
+            layout: {
+              duration: 0.3,
+              ease: "easeInOut",
+            },
+          }}
+          onSubmit={handleSubmit}
+          className="
 w-full
 max-w-xl
 p-10
@@ -248,56 +248,56 @@ backdrop-blur-xl
 border
 border-white/10
 "
->
+        >
 
-        {/* Heading */}
-       <AnimatePresence mode="wait">
+          {/* Heading */}
+          <AnimatePresence mode="wait">
 
-  <motion.h1
-    key={isLogin ? "login" : "signup"}
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    transition={{ duration: 0.25 }}
-className="
+            <motion.h1
+              key={isLogin ? "login" : "signup"}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="
 text-white
 font-serif
 text-4xl
 mb-2
 "  >
-    {isLogin ? "Login" : "Create Account"}
-  </motion.h1>
+              {isLogin ? "Login" : "Create Account"}
+            </motion.h1>
 
-</AnimatePresence>
+          </AnimatePresence>
 
-        {/* Error Message */}
-        {
-          error && (
-            <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4 text-sm">
-              {error}
-            </div>
-          )
-        }
+          {/* Error Message */}
+          {
+            error && (
+              <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4 text-sm">
+                {error}
+              </div>
+            )
+          }
 
-        {/* Full Name */}
-        <AnimatePresence mode="wait">
+          {/* Full Name */}
+          <AnimatePresence mode="wait">
 
-  {!isLogin && (
+            {!isLogin && (
 
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.25 }}
-    >
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25 }}
+              >
 
-      <input
-        type="text"
-        name="fullName"
-        placeholder="Jane Doe"
-        value={formData.fullName}
-        onChange={handleChange}
-       className="
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="Jane Doe"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  className="
 w-full
 mb-5
 px-5
@@ -312,22 +312,22 @@ outline-none
 focus:border-violet-500
 transition
 "
-      />
+                />
 
-    </motion.div>
+              </motion.div>
 
-  )}
+            )}
 
-</AnimatePresence>
+          </AnimatePresence>
 
-        {/* Email */}
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-className="
+          {/* Email */}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="
 w-full
 mb-5
 px-5
@@ -343,14 +343,14 @@ focus:border-violet-500
 transition
 "        />
 
-        {/* Password */}
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-className="
+          {/* Password */}
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="
 w-full
 mb-5
 px-5
@@ -366,25 +366,25 @@ focus:border-violet-500
 transition
 "        />
 
-        {/* Confirm Password */}
-      <AnimatePresence>
+          {/* Confirm Password */}
+          <AnimatePresence>
 
-  {!isLogin && (
+            {!isLogin && (
 
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.25 }}
-    >
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25 }}
+              >
 
-      <input
-        type="password"
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-        className="
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  className="
 w-full
 mb-5
 px-5
@@ -399,62 +399,62 @@ outline-none
 focus:border-violet-500
 transition
 "
-      />
+                />
 
-    </motion.div>
+              </motion.div>
 
-  )}
+            )}
 
-</AnimatePresence>
+          </AnimatePresence>
 
-        {/* Submit Button */}
-        <motion.button
-  type="submit"
-  whileHover={{ scale: 1.02 }}
-  whileTap={{ scale: 0.98 }}
-  className="w-full bg-gradient-to-r
+          {/* Submit Button */}
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-gradient-to-r
 from-[#6D5EF8]
 to-[#7B6CF8]
 font-semibold
 text-lg text-white py-3 rounded-lg"
->
-  {isLogin ? "Login" : "Signup"}
-</motion.button>
-
-        {/* Toggle Login Signup */}
-        <p className="text-center mt-6 text-gray-600">
-
-          {
-            isLogin
-              ? "Don't have an account?"
-              : "Already have an account?"
-          }
-
-          <button
-            type="button"
-            onClick={() => {
-
-setIsLogin((prev) => !prev);
-              setError("");
-
-            }}
-            className="text-blue-600 font-semibold ml-2"
           >
+            {isLogin ? "Login" : "Signup"}
+          </motion.button>
 
-            {isLogin ? "Signup" : "Login"}
+          {/* Toggle Login Signup */}
+          <p className="text-center mt-6 text-gray-600">
 
-          </button>
+            {
+              isLogin
+                ? "Don't have an account?"
+                : "Already have an account?"
+            }
 
-        </p>
+            <button
+              type="button"
+              onClick={() => {
 
-      </motion.form>
+                setIsLogin((prev) => !prev);
+                setError("");
 
-  </div>
+              }}
+              className="text-blue-600 font-semibold ml-2"
+            >
 
-</div>
-     
+              {isLogin ? "Signup" : "Login"}
 
-    
+            </button>
+
+          </p>
+
+        </motion.form>
+
+      </div>
+
+    </div>
+
+
+
 
   );
 

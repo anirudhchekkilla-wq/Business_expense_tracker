@@ -5,7 +5,7 @@ import React, {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BusinessContext }
-from "../context/BusinessContext";
+  from "../context/BusinessContext";
 import Sidebar from "../components/Sidebar";
 import TopNavbar from "../components/TopNavbar";
 
@@ -14,7 +14,7 @@ const SettingsPage = () => {
   const {
     selectedBusiness,
   } = useContext(BusinessContext);
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [businessName, setBusinessName] =
     useState(
       selectedBusiness?.businessName || ""
@@ -52,42 +52,42 @@ const navigate = useNavigate();
   };
 
   const deleteBusiness = async () => {
-  const confirmDelete = window.confirm(
-    "Are you sure you want to delete this business?"
-  );
-
-  if (!confirmDelete) return;
-
-  try {
-
-    await axios.delete(
-      `http://127.0.0.1:5000/business/${selectedBusiness._id}`
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this business?"
     );
 
-    localStorage.removeItem(
-      "selectedBusiness"
-    );
+    if (!confirmDelete) return;
 
-    alert(
-      "Business Deleted Successfully"
-    );
+    try {
 
-    navigate("/businesses");
+      await axios.delete(
+        `http://127.0.0.1:5000/business/${selectedBusiness._id}`
+      );
 
-  } catch (error) {
-    console.error(error);
-  }
-};
+      localStorage.removeItem(
+        "selectedBusiness"
+      );
+
+      alert(
+        "Business Deleted Successfully"
+      );
+
+      navigate("/businesses");
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-     <div className="flex">
+    <div className="flex">
 
       <Sidebar />
 
-<div className="flex-1 bg-[#020617] min-h-screen">
+      <div className="flex-1 bg-[#020617] min-h-screen">
         <TopNavbar />
-<div
-  className="
+        <div
+          className="
   p-6
   min-h-screen
   bg-gradient-to-br
@@ -96,31 +96,31 @@ const navigate = useNavigate();
   to-[#1a0f3d]
   text-white
 "
->
-      <div className="mb-10">
+        >
+          <div className="mb-10">
 
-  <h1
-    className="
+            <h1
+              className="
     text-4xl
     font-serif
     text-[#e7ebff]
     "
-  >
-    Settings
-  </h1>
+            >
+              Settings
+            </h1>
 
-  <p className="text-[#a9b3d1] text-xl mt-2">
-    Manage business details and workspaces.
-  </p>
+            <p className="text-[#a9b3d1] text-xl mt-2">
+              Manage business details and workspaces.
+            </p>
 
-</div>
+          </div>
 
-<div className="space-y-8">
+          <div className="space-y-8">
 
-  {/* Business Details */}
+            {/* Business Details */}
 
-  <div
-    className="
+            <div
+              className="
     bg-white/[0.03]
     backdrop-blur-xl
     border
@@ -128,36 +128,36 @@ const navigate = useNavigate();
     rounded-[32px]
     p-8
     "
-  >
+            >
 
-    <h2
-      className="
+              <h2
+                className="
       text-3xl
       font-serif
       text-[#e7ebff]
       mb-8
       "
-    >
-      Business details
-    </h2>
+              >
+                Business details
+              </h2>
 
-    <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
 
-      <div>
+                <div>
 
-        <label className="block text-gray-400 mb-3">
-          Business name
-        </label>
+                  <label className="block text-gray-400 mb-3">
+                    Business name
+                  </label>
 
-        <input
-          type="text"
-          value={businessName}
-          onChange={(e) =>
-            setBusinessName(
-              e.target.value
-            )
-          }
-          className="
+                  <input
+                    type="text"
+                    value={businessName}
+                    onChange={(e) =>
+                      setBusinessName(
+                        e.target.value
+                      )
+                    }
+                    className="
           w-full
           px-5
           py-4
@@ -167,25 +167,25 @@ const navigate = useNavigate();
           border-white/10
           text-white
           "
-        />
+                  />
 
-      </div>
+                </div>
 
-      <div>
+                <div>
 
-        <label className="block text-gray-400 mb-3">
-          Currency
-        </label>
+                  <label className="block text-gray-400 mb-3">
+                    Currency
+                  </label>
 
-        <input
-          type="text"
-          value={currency}
-          onChange={(e) =>
-            setCurrency(
-              e.target.value
-            )
-          }
-          className="
+                  <input
+                    type="text"
+                    value={currency}
+                    onChange={(e) =>
+                      setCurrency(
+                        e.target.value
+                      )
+                    }
+                    className="
           w-full
           px-5
           py-4
@@ -195,27 +195,27 @@ const navigate = useNavigate();
           border-white/10
           text-white
           "
-        />
+                  />
 
-      </div>
+                </div>
 
-    </div>
+              </div>
 
-    <div className="mb-8">
+              <div className="mb-8">
 
-      <label className="block text-gray-400 mb-3">
-        Business type
-      </label>
+                <label className="block text-gray-400 mb-3">
+                  Business type
+                </label>
 
-      <input
-        type="text"
-        value={businessType}
-        onChange={(e) =>
-          setBusinessType(
-            e.target.value
-          )
-        }
-        className="
+                <input
+                  type="text"
+                  value={businessType}
+                  onChange={(e) =>
+                    setBusinessType(
+                      e.target.value
+                    )
+                  }
+                  className="
         w-full
         px-5
         py-4
@@ -225,16 +225,16 @@ const navigate = useNavigate();
         border-white/10
         text-white
         "
-      />
+                />
 
-    </div>
+              </div>
 
 
-    <div className="flex justify-end">
+              <div className="flex justify-end">
 
-      <button
-        onClick={updateBusiness}
-        className="
+                <button
+                  onClick={updateBusiness}
+                  className="
         px-8
         py-4
         rounded-2xl
@@ -244,18 +244,18 @@ const navigate = useNavigate();
         text-white
         font-semibold
         "
-      >
-        Save changes
-      </button>
+                >
+                  Save changes
+                </button>
 
-    </div>
+              </div>
 
-  </div>
+            </div>
 
-  {/* Workspaces */}
+            {/* Workspaces */}
 
-  <div
-    className="
+            <div
+              className="
     bg-white/[0.03]
     backdrop-blur-xl
     border
@@ -263,29 +263,29 @@ const navigate = useNavigate();
     rounded-[32px]
     p-8
     "
-  >
+            >
 
-    <h2
-      className="
+              <h2
+                className="
       text-4xl
       font-serif
       mb-3
       "
-    >
-      Workspaces
-    </h2>
+              >
+                Workspaces
+              </h2>
 
-    <p className="text-[#a9b3d1] mb-6">
-      Add new businesses or switch between them.
-    </p>
+              <p className="text-[#a9b3d1] mb-6">
+                Add new businesses or switch between them.
+              </p>
 
-    <div className="flex gap-4">
+              <div className="flex gap-4">
 
-      <button
-        onClick={() =>
-          navigate("/business-setup")
-        }
-        className="
+                <button
+                  onClick={() =>
+                    navigate("/business-setup")
+                  }
+                  className="
         px-6
         py-4
         rounded-2xl
@@ -294,15 +294,15 @@ const navigate = useNavigate();
         hover:bg-white/5
         transition
         "
-      >
-        + Add new business
-      </button>
+                >
+                  + Add new business
+                </button>
 
-      <button
-        onClick={() =>
-          navigate("/businesses")
-        }
-        className="
+                <button
+                  onClick={() =>
+                    navigate("/businesses")
+                  }
+                  className="
         px-6
         py-4
         rounded-2xl
@@ -311,44 +311,44 @@ const navigate = useNavigate();
         hover:bg-white/5
         transition
         "
-      >
-        ↻ Switch business
-      </button>
+                >
+                  ↻ Switch business
+                </button>
 
-    </div>
+              </div>
 
-  </div>
+            </div>
 
-  {/* Danger Zone */}
+            {/* Danger Zone */}
 
-  <div
-    className="
+            <div
+              className="
     bg-white/[0.03]
     border
     border-red-500/40
     rounded-[32px]
     p-8
     "
-  >
+            >
 
-    <h2
-      className="
+              <h2
+                className="
       text-4xl
       font-serif
       text-red-500
       mb-3
       "
-    >
-      Danger zone
-    </h2>
+              >
+                Danger zone
+              </h2>
 
-    <p className="text-gray-400 mb-6">
-      Deleting a business permanently removes its transactions.
-    </p>
+              <p className="text-gray-400 mb-6">
+                Deleting a business permanently removes its transactions.
+              </p>
 
-    <button
-      onClick={deleteBusiness}
-      className="
+              <button
+                onClick={deleteBusiness}
+                className="
       px-6
       py-4
       rounded-2xl
@@ -359,16 +359,16 @@ const navigate = useNavigate();
       hover:bg-red-500/20
       transition
       "
-    >
-      🗑 Delete this business
-    </button>
+              >
+                🗑 Delete this business
+              </button>
 
-  </div>
+            </div>
 
-</div>
-</div>
-</div>
-</div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

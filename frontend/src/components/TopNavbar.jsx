@@ -63,8 +63,8 @@ function TopNavbar() {
           selectedBusiness?.currency === "USD"
             ? "$"
             : selectedBusiness?.currency === "EUR"
-            ? "€"
-            : "₹";
+              ? "€"
+              : "₹";
 
         const generatedNotifs = [];
 
@@ -256,9 +256,8 @@ function TopNavbar() {
                     <div
                       key={notif.id}
                       onClick={() => markSingleAsRead(notif.id)}
-                      className={`px-4 py-3.5 flex items-start gap-3 hover:bg-white/[0.05] transition-colors cursor-pointer relative group ${
-                        !notif.read ? "bg-cyan-500/[0.04]" : "opacity-80"
-                      }`}
+                      className={`px-4 py-3.5 flex items-start gap-3 hover:bg-white/[0.05] transition-colors cursor-pointer relative group ${!notif.read ? "bg-cyan-500/[0.04]" : "opacity-80"
+                        }`}
                     >
                       {/* Icon */}
                       <div className="mt-0.5 shrink-0">
@@ -363,4 +362,4 @@ function TopNavbar() {
   );
 }
 
-export default TopNavbar;
+export default TopNavbar;

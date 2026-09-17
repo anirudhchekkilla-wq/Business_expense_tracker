@@ -24,11 +24,11 @@ const TransactionsPage = () => {
 
   const [categoryFilter, setCategoryFilter] =
     useState("All");
-const [fromDate, setFromDate] =
-  useState("");
+  const [fromDate, setFromDate] =
+    useState("");
 
-const [toDate, setToDate] =
-  useState("");
+  const [toDate, setToDate] =
+    useState("");
   const fetchTransactions = async () => {
     try {
       if (!selectedBusiness) return;
@@ -120,30 +120,30 @@ const [toDate, setToDate] =
         const matchesType =
           typeFilter === "All" ||
           transaction.type ===
-            typeFilter;
+          typeFilter;
 
         const matchesCategory =
           categoryFilter ===
-            "All" ||
+          "All" ||
           transaction.category ===
-            categoryFilter;
+          categoryFilter;
         const transactionDate =
-  new Date(transaction.date);
+          new Date(transaction.date);
 
-const matchesDate =
-  (!fromDate ||
-    transactionDate >=
-      new Date(fromDate)) &&
+        const matchesDate =
+          (!fromDate ||
+            transactionDate >=
+            new Date(fromDate)) &&
 
-  (!toDate ||
-    transactionDate <=
-      new Date(toDate));
+          (!toDate ||
+            transactionDate <=
+            new Date(toDate));
 
         return (
-  matchesSearch &&
-  matchesType &&
-  matchesCategory &&
-  matchesDate
+          matchesSearch &&
+          matchesType &&
+          matchesCategory &&
+          matchesDate
         );
       }
     );
@@ -153,10 +153,10 @@ const matchesDate =
 
       <Sidebar />
 
-<div className="flex-1 bg-[#020617] min-h-screen">
+      <div className="flex-1 bg-[#020617] min-h-screen">
         <TopNavbar />
-<div
-  className="
+        <div
+          className="
   p-6
   min-h-screen
   bg-gradient-to-br
@@ -165,28 +165,28 @@ const matchesDate =
   to-[#1a0f3d]
   text-white
 "
->
-      <div className="mb-8">
+        >
+          <div className="mb-8">
 
-  <h1
-    className="
+            <h1
+              className="
     text-4xl
     font-serif
     text-[#e7ebff]
     "
-  >
-    Transactions
-  </h1>
+            >
+              Transactions
+            </h1>
 
-  <p className="text-[#a9b3d1] text-xl mt-2">
-    Combined history across income and expenses.
-  </p>
+            <p className="text-[#a9b3d1] text-xl mt-2">
+              Combined history across income and expenses.
+            </p>
 
-</div>
+          </div>
 
-      {/* Filters */}
-<div
-  className="
+          {/* Filters */}
+          <div
+            className="
   bg-white/[0.03]
   backdrop-blur-xl
   border
@@ -195,18 +195,18 @@ const matchesDate =
   p-5
   mb-8
 "
->
+          >
 
-  <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
 
-    <input
-      type="text"
-      placeholder="Search transactions..."
-      value={searchTerm}
-      onChange={(e) =>
-        setSearchTerm(e.target.value)
-      }
-      className="
+              <input
+                type="text"
+                placeholder="Search transactions..."
+                value={searchTerm}
+                onChange={(e) =>
+                  setSearchTerm(e.target.value)
+                }
+                className="
       flex-1
       px-5
       py-4
@@ -219,10 +219,10 @@ const matchesDate =
       outline-none
       focus:border-violet-500
       "
-    />
+              />
 
-    <div
-      className="
+              <div
+                className="
       flex
       gap-2
       bg-white/5
@@ -231,68 +231,65 @@ const matchesDate =
       rounded-2xl
       p-2
       "
-    >
+              >
 
-      <button
-        onClick={() => setTypeFilter("All")}
-        className={`
+                <button
+                  onClick={() => setTypeFilter("All")}
+                  className={`
           px-5
           py-3
           rounded-xl
           transition-all
-          ${
-            typeFilter === "All"
-              ? "bg-[#6D5EF8] text-white"
-              : "text-gray-400 hover:text-white"
-          }
+          ${typeFilter === "All"
+                      ? "bg-[#6D5EF8] text-white"
+                      : "text-gray-400 hover:text-white"
+                    }
         `}
-      >
-        All
-      </button>
+                >
+                  All
+                </button>
 
-      <button
-        onClick={() => setTypeFilter("Income")}
-        className={`
+                <button
+                  onClick={() => setTypeFilter("Income")}
+                  className={`
           px-5
           py-3
           rounded-xl
           transition-all
-          ${
-            typeFilter === "Income"
-              ? "bg-[#6D5EF8] text-white"
-              : "text-gray-400 hover:text-white"
-          }
+          ${typeFilter === "Income"
+                      ? "bg-[#6D5EF8] text-white"
+                      : "text-gray-400 hover:text-white"
+                    }
         `}
-      >
-        Income
-      </button>
+                >
+                  Income
+                </button>
 
-      <button
-        onClick={() => setTypeFilter("Expense")}
-        className={`
+                <button
+                  onClick={() => setTypeFilter("Expense")}
+                  className={`
           px-5
           py-3
           rounded-xl
           transition-all
-          ${
-            typeFilter === "Expense"
-              ? "bg-[#6D5EF8] text-white"
-              : "text-gray-400 hover:text-white"
-          }
+          ${typeFilter === "Expense"
+                      ? "bg-[#6D5EF8] text-white"
+                      : "text-gray-400 hover:text-white"
+                    }
         `}
-      >
-        Expense
-      </button>
+                >
+                  Expense
+                </button>
 
-    </div>
+              </div>
 
-  </div>
+            </div>
 
-</div>
+          </div>
 
-     
-<div
-  className="
+
+          <div
+            className="
   bg-white/[0.03]
   backdrop-blur-xl
   border
@@ -300,96 +297,96 @@ const matchesDate =
   rounded-[32px]
   overflow-hidden
 "
->
-        <table className="w-full font-serif">
+          >
+            <table className="w-full font-serif">
 
-<thead className="border-b border-white/10">
-            <tr>
+              <thead className="border-b border-white/10">
+                <tr>
 
-              <th
-  className="
+                  <th
+                    className="
   p-6
   text-left
   text-gray-400
   uppercase
   tracking-wide
 "
->
-                Type
-              </th>
+                  >
+                    Type
+                  </th>
 
-              <th
-  className="
+                  <th
+                    className="
   p-6
   text-left
   text-gray-400
   uppercase
   tracking-wide
 "
->
-                Title
-              </th>
+                  >
+                    Title
+                  </th>
 
-              <th
-  className="
+                  <th
+                    className="
   p-6
   text-left
   text-gray-400
   uppercase
   tracking-wide
 "
->
-                Category
-              </th>
+                  >
+                    Category
+                  </th>
 
-              <th
-  className="
+                  <th
+                    className="
   p-6
   text-left
   text-gray-400
   uppercase
   tracking-wide
 "
->
-                Amount
-              </th>
+                  >
+                    Amount
+                  </th>
 
-              <th
-  className="
+                  <th
+                    className="
   p-6
   text-left
   text-gray-400
   uppercase
   tracking-wide
 "
->
-                Date
-              </th>
+                  >
+                    Date
+                  </th>
 
-            </tr>
+                </tr>
 
-          </thead>
+              </thead>
 
-          <tbody>
+              <tbody>
 
-            {filteredTransactions.map(
-              (transaction) => (
+                {filteredTransactions.map(
+                  (transaction) => (
 
-                <tr
-                  key={
-                    transaction._id
-                  }
-className="
+                    <tr
+                      key={
+                        transaction._id
+                      }
+                      className="
 border-b
 border-white/5
 hover:bg-white/[0.02]
 transition
 "                >
- <td className="p-6 text-[#d1d5db]">
-          {transaction.type === "Income" ? (
+                      <td className="p-6 text-[#d1d5db]">
+                        {transaction.type === "Income" ? (
 
-  <span
-    className="
+                          <span
+                            className="
     inline-flex
     items-center
     gap-2
@@ -401,14 +398,14 @@ transition
     text-sm
     font-medium
     "
-  >
-    ↗ income
-  </span>
+                          >
+                            ↗ income
+                          </span>
 
-) : (
+                        ) : (
 
-  <span
-    className="
+                          <span
+                            className="
     inline-flex
     items-center
     gap-2
@@ -420,55 +417,54 @@ transition
     text-sm
     font-medium
     "
-  >
-    ↘ expense
-  </span>
+                          >
+                            ↘ expense
+                          </span>
 
-)}
-</td>
-                  <td className="p-6 text-[#d1d5db]">
-                    {
-                      transaction.title
-                    }
-                  </td>
+                        )}
+                      </td>
+                      <td className="p-6 text-[#d1d5db]">
+                        {
+                          transaction.title
+                        }
+                      </td>
 
-                  <td className="p-6 text-[#d1d5db]">
-                    {
-                      transaction.category
-                    }
-                  </td>
+                      <td className="p-6 text-[#d1d5db]">
+                        {
+                          transaction.category
+                        }
+                      </td>
 
-                  <td
-                    className={`p-3 font-serif ${
-                      transaction.type ===
-                      "Income"
-                        ? "text-emerald-600"
-                        : "text-amber-600"
-                    }`}
-                  >
-                  {transaction.type === "Income"
-  ? `+₹${transaction.amount}`
-  : `-₹${transaction.amount}`}
-                  </td>
+                      <td
+                        className={`p-3 font-serif ${transaction.type ===
+                            "Income"
+                            ? "text-emerald-600"
+                            : "text-amber-600"
+                          }`}
+                      >
+                        {transaction.type === "Income"
+                          ? `+₹${transaction.amount}`
+                          : `-₹${transaction.amount}`}
+                      </td>
 
-                  <td className="p-6 text-[#d1d5db]">
-                    {new Date(
-                      transaction.date
-                    ).toLocaleDateString()}
-                  </td>
+                      <td className="p-6 text-[#d1d5db]">
+                        {new Date(
+                          transaction.date
+                        ).toLocaleDateString()}
+                      </td>
 
-                </tr>
-              )
-            )}
+                    </tr>
+                  )
+                )}
 
-          </tbody>
+              </tbody>
 
-        </table>
+            </table>
 
+          </div>
+
+        </div>
       </div>
-
-    </div>
-    </div>
     </div>
   );
 };
