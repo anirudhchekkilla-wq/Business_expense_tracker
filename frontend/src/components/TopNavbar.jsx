@@ -49,8 +49,8 @@ function TopNavbar() {
     const fetchNotifications = async () => {
       try {
         const [incomeRes, expenseRes] = await Promise.all([
-          axios.get(`http://127.0.0.1:5000/income/${selectedBusiness._id}`).catch(() => ({ data: [] })),
-          axios.get(`http://127.0.0.1:5000/expenses/${selectedBusiness._id}`).catch(() => ({ data: [] }))
+          axios.get(` https://business-expense-tracker-vuwc.onrender.com/income/${selectedBusiness._id}`).catch(() => ({ data: [] })),
+          axios.get(` https://business-expense-tracker-vuwc.onrender.com/expenses/${selectedBusiness._id}`).catch(() => ({ data: [] }))
         ]);
 
         const incomes = incomeRes.data || [];

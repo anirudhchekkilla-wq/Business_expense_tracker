@@ -50,7 +50,7 @@ function BusinessSetupPage() {
         localStorage.getItem("user_id")
       );
       await axios.post(
-        "http://127.0.0.1:5000/business",
+        " https://business-expense-tracker-vuwc.onrender.com/business",
         {
           user_id: userId,
           businessName: businessData.businessName,

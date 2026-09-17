@@ -36,7 +36,7 @@ function ExpensesPage() {
 
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/expenses/${selectedBusiness._id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/expenses/${selectedBusiness._id}`
       );
 
       setExpenses(response.data);
@@ -61,7 +61,7 @@ function ExpensesPage() {
     try {
 
       await axios.delete(
-        `http://127.0.0.1:5000/expense/${id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/expense/${id}`
       );
 
       fetchExpenses();
@@ -92,7 +92,7 @@ function ExpensesPage() {
     try {
 
       await axios.put(
-        `http://127.0.0.1:5000/expense/${editingId}`,
+        ` https://business-expense-tracker-vuwc.onrender.com/expense/${editingId}`,
         {
           title: formData.title,
           amount: formData.amount,
@@ -152,7 +152,7 @@ function ExpensesPage() {
       console.log("Expense Payload:", expenseData);
 
       await axios.post(
-        "http://127.0.0.1:5000/expense",
+        " https://business-expense-tracker-vuwc.onrender.com/expense",
         expenseData
       );
 

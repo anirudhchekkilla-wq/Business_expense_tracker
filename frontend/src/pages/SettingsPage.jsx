@@ -34,7 +34,7 @@ const SettingsPage = () => {
     try {
 
       await axios.put(
-        `http://127.0.0.1:5000/business/${selectedBusiness._id}`,
+        ` https://business-expense-tracker-vuwc.onrender.com/business/${selectedBusiness._id}`,
         {
           businessName: businessName,
           businessType: businessType,
@@ -61,7 +61,7 @@ const SettingsPage = () => {
     try {
 
       await axios.delete(
-        `http://127.0.0.1:5000/business/${selectedBusiness._id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/business/${selectedBusiness._id}`
       );
 
       localStorage.removeItem(

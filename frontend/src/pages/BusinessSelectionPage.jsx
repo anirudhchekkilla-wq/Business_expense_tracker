@@ -26,7 +26,7 @@ function BusinessSelectionPage() {
 
       const response =
         await axios.get(
-          `http://127.0.0.1:5000/businesses/${userId}`
+          ` https://business-expense-tracker-vuwc.onrender.com/businesses/${userId}`
         );
 
       setBusinesses(

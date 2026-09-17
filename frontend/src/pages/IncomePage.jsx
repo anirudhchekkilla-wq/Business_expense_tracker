@@ -39,7 +39,7 @@ function IncomePage() {
 
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/income/${selectedBusiness._id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/income/${selectedBusiness._id}`
       );
 
       setIncome(response.data);
@@ -64,7 +64,7 @@ function IncomePage() {
     try {
 
       await axios.delete(
-        `http://127.0.0.1:5000/income/${id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/income/${id}`
       );
 
       fetchIncome();
@@ -95,7 +95,7 @@ function IncomePage() {
     try {
 
       await axios.put(
-        `http://127.0.0.1:5000/income/${editingId}`,
+        ` https://business-expense-tracker-vuwc.onrender.com/income/${editingId}`,
         {
           source: formData.source,
           amount: formData.amount,
@@ -145,7 +145,7 @@ function IncomePage() {
       };
 
       await axios.post(
-        "http://127.0.0.1:5000/income",
+        " https://business-expense-tracker-vuwc.onrender.com/income",
         incomeData
       );
 

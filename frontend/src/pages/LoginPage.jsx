@@ -66,8 +66,8 @@ function LoginPage() {
     try {
 
       const url = isLogin
-        ? "http://127.0.0.1:5000/login"
-        : "http://127.0.0.1:5000/register";
+        ? " https://business-expense-tracker-vuwc.onrender.com/login"
+        : " https://business-expense-tracker-vuwc.onrender.com/register";
 
       const response = await axios.post(
         url,

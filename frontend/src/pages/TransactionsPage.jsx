@@ -34,11 +34,11 @@ const TransactionsPage = () => {
       if (!selectedBusiness) return;
 
       const incomeRes = await axios.get(
-        `http://127.0.0.1:5000/income/${selectedBusiness._id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/income/${selectedBusiness._id}`
       );
 
       const expenseRes = await axios.get(
-        `http://127.0.0.1:5000/expenses/${selectedBusiness._id}`
+        ` https://business-expense-tracker-vuwc.onrender.com/expenses/${selectedBusiness._id}`
       );
 
       const incomeData = incomeRes.data.map(
